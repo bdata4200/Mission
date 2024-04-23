@@ -1,0 +1,226 @@
+;******************************************************************************
+;  File version: 14.2002-08-03BM ESKOM SOUTHERN.
+;
+;  NOTE: do NOT put comments on the same line as a parameter.
+;
+;  ESKOM non-EBSST 2002-08-03 BM.
+;  1. SWIPE_PROJECTCODESWOP FALSE for Empangeni.
+;  2. Focus task disabled to allow swipe encoder to remain in focus.
+;  3. User auto logoff set to 50 minutes.
+;
+;******************************************************************************
+
+
+;******************************************************************************
+;                                 Port Assignments And Settings
+;******************************************************************************
+
+;-----------------------------------------Customer display
+;UPS com2
+
+CUSTOMER_DISPLAY_PORT,3
+CD_SETTINGS,"9600,N,8,1"
+
+;-----------------------------------------Direct communications port
+LINK_PORT,3
+STD_PORT_SETTINGS,"115200,N,8,1"
+
+;-----------------------------------------Security module port
+SM_PORT,4
+SM_SETTINGS,"9600,N,8,1"
+;SM handshake definitions, 0 = NONE, 1 = XON/XOFF, 2 = RTS
+SM_HANDSHAKE,1
+NO_SM,FALSE
+
+;-----------------------------------------MagStar PRW Port
+PRW_PORT,1
+;The maintenance figure is calculated as (20 minutes * 300)
+PRW_MAINTENANCE_TIMER,6000
+
+;******************************************************************************
+;                                 Auto-Logoff Definitions
+;******************************************************************************
+;Value entered is in units of 200 milliseconds, i.e. 1500 = 5 minutes
+TIM_AUTOLOGOFF_LOAD_VALUE,15000
+
+;******************************************************************************
+;                                 Swipe Card Reader Definitions
+;******************************************************************************
+SWIPE_STARTSENTINEL,">"
+SWIPE_ENDSENTINEL,"?"
+SWIPE_STARTTRACK1,"%"
+SWIPE_STARTTRACK2,";"
+
+;******************************************************************************
+;                                 Printer Definitions
+;******************************************************************************
+PRINTER_SET,FALSE
+;AXIOHM PRINTER
+;PRINTER_TYPE,"AXIOHM A714 PARTIAL CUT"
+;PRINTER_CONTROL_FONT,"control"
+;PRINTER_OPENTILL_COMMAND,"A"
+;PRINTER_STANDARD_FONT,"Font B (8.0 CPI)"
+;PRINTER_SMALL_FONT,"Font B (16.0 CPI)"
+;PRINTER_RED_FONT,"Font B Red (8.0 CPI)"
+
+;EPSON PRINTER
+PRINTER_TYPE,"EPSON TM-U210"
+PRINTER_CONTROL_FONT,"control"
+;50 millisecond pulse
+;PRINTER_OPENTILL_COMMAND,"A"
+;100 millisecond pulse
+;PRINTER_OPENTILL_COMMAND,"B"
+;150 millisecond pulse
+;PRINTER_OPENTILL_COMMAND,"C"
+;200 millisecond pulse
+PRINTER_OPENTILL_COMMAND,"D"
+PRINTER_STANDARD_FONT,"8 cpi"
+PRINTER_SMALL_FONT,"16 cpi"
+PRINTER_RED_FONT,"8 cpi (RED)"
+PRINT_SKIP_LINES,0
+PRINT_DIGITS_ON_ONE_LINE,FALSE
+
+;******************************************************************************
+;                                 Account Payment Definitions
+;******************************************************************************
+;These values are used to indicate the different account payment types
+ESKOM_PAYMENTS,FALSE
+ACC_PAYMENT_ALLOCATION_CODE,"091800"
+ACC_FINE_PAYMENT_ALLOCATION,"091801"
+ACCOUNT_PAYMENT_PROMPT,"Metro Bill"
+LUHN_DURBANMETRO_ACCOUNT_CHECK,FALSE
+
+;******************************************************************************
+;                                 Key Processing Options Definitions
+;******************************************************************************
+STSCLEARKEYREGISTER,TRUE
+
+;******************************************************************************
+;                                 TCP/IP Transfer Definitions
+;******************************************************************************
+DISK_SHAREDSMSSENDDIRECTORY,"C:\"
+DISK_SHAREDSMSRECEDIRECTORY,"C:\"
+DISK_SMSFILESEMAPHORE,"SMS_READY"
+DISK_CDUFILESEMAPHORE,"CDU_READY"
+
+;******************************************************************************
+;                                 VEND TO REGISTERED ONLY Defintion
+;******************************************************************************
+VEND_ONLY_REGISTERED,FALSE
+VEND_SHOW_ACCOUNT_NUMBERS,FALSE
+
+;******************************************************************************
+;                                 SHUTDOWN Application Defintion
+;******************************************************************************
+SHUTDOWN_TO_OS,FALSE
+
+;******************************************************************************
+;                                 DETAILED LOGGING Application Defintion
+;******************************************************************************
+LOG_IS_ENABLED,FALSE
+
+;******************************************************************************
+;                                 CUSTOMER BLOCKING Application Defintion
+;******************************************************************************
+BLK_CUSTOMER_BLOCKING_ENABLED,FALSE
+BLK_PREVENT_VEND,FALSE
+BLK_SIMPLE_MESSAGE,"Customer has been flagged at the SMS!"
+
+;******************************************************************************
+;                                 MANUAL KEY CHANGE DEFUALT SETTINGS
+;******************************************************************************
+DEFAULT_SGC,"00000"
+DEFAULT_KRN,"1"
+
+;******************************************************************************
+;                                 IMPULSE VENDING OPTIONS
+;******************************************************************************
+IMPULSE_VENDING_ENABLED,FALSE
+IMPULSE_CONLOG_SGC,"000000"
+IMPULSE_EML_SGC,"000000"
+IMPULSE_UEC_SGC,"000000"
+IMPULSE_AEG_SGC,"000000"
+IMPULSE_CBI_SGC,"000000"
+
+IMPULSE_PROPCONLOG_SGC,"000000"
+IMPULSE_PROPCONLOG_TI,"01"
+
+IMPULSE_CONLOG_TT,"02"
+IMPULSE_EML_TT,"02"
+IMPULSE_UEC_TT,"02"
+IMPULSE_AEG_TT,"02"
+IMPULSE_CBI_TT,"02"
+
+IMPULSE_CONLOG_KRN,"1"
+IMPULSE_EML_KRN,"1"
+IMPULSE_UEC_KRN,"1"
+IMPULSE_AEG_KRN,"1"
+IMPULSE_CBI_KRN,"1"
+
+;******************************************************************************
+;                                 Message Prompts
+;******************************************************************************
+
+;-----------------------------------------Customer display prompts
+CD_VEND_ELECTRICITY_MESSAGE,"Vend Electricity"
+CD_CANCEL_ELECTRICITY_MESSAGE,"Cancel Token"
+CD_REISSUE_ELECTRICITY_MESSAGE,"Re-Issue Token"
+CD_FREEISSUE_ELECTRICITY_MESSAGE,"Free Issue Token"
+CD_REPLACEMENT_ELECTRICITY_MESSAGE,"Replacement Token"
+CD_NEXT_CUSTOMER_MESSAGE,"Next Customer Please"
+CD_METER_NUMBER_PROMPT,"Meter Number?       "
+CD_AMOUNT_PROMPT,"Amount?             "
+CD_METER_AND_AMOUNT_PROMPT,"Meter Number/Amount?"
+CD_TENDERED_INFO,"Tendered "
+CD_CHANGE_INFO,"Change "
+CD_THANKYOU_INFO,"Thank you.          "
+CD_CLOSED_INFO,"Closed - Next Teller"
+
+;******************************************************************************
+;                                 EXTERNAL DRIVE SETTINGS
+;******************************************************************************
+EXTERNAL_DRIVE_SUPPORTED,FALSE
+EXTERNAL_DRIVE_PATH,"A:\"
+
+;******************************************************************************
+;                                 PRINT SPEED SETTINGS
+;******************************************************************************
+PRINT_CUSTOMER_DETAILS_ON_TOKEN,FALSE
+PRINT_FAST,TRUE
+
+;******************************************************************************
+;                                 ALLOW KEYPAD CANCELLATIONS
+;******************************************************************************
+KEYPAD_CANCELS_ALLOWED,FALSE
+
+;******************************************************************************
+;                                 SERIAL NUMBER PADDING OPTIONS
+;******************************************************************************
+SERIAL_NUMBER_PADDING,FALSE
+
+;******************************************************************************
+;                                 FOCUS TASK SETTINGS
+;******************************************************************************
+DISABLE_FOCUS_TASK,TRUE
+
+DIRECT_SMS_UPDATE,TRUE
+MAKE_ID_CARDS_FROM_DB,FALSE
+CLEANUP_TRANSACTION_EXPIRATION_PERIOD,0
+GPERMITTEDMINIMUMTOKENVALUE,0
+
+;******************************************************************************
+;                                 DALLAS BUTTON COMMS SUPPORT
+;******************************************************************************
+DALLAS_TOKEN_SUPPORTED,FALSE
+DALLAS_READER_PORT,2
+
+SWIPE_PROJECTCODESWOP,FALSE
+
+;------------------ updates v102 to v129. 2001-07-19. ---------------------
+
+CANCEL_ANY_TOKEN,TRUE
+BLK_MONTH_START_DAY,"01"
+ACC_METER_NUMBER_CHECK,FALSE
+;--------------------------------- END -------------------------------------
+;--- auto updated 10-22-2001 14:04:03 ver 1.0.1
+DURBAN_METRO_PROP_SWIPE,FALSE
